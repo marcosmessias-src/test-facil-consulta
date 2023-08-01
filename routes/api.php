@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CidadeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,12 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::post('register', [AuthController::class, 'register']);
+
+/*
+|--------------------------------------------------------------------------
+| Listar cidades
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('cidades', [CidadeController::class, 'index']);
