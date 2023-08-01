@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('medico_pacientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('medico_id')->constrained();
+            $table->foreignId('paciente_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
