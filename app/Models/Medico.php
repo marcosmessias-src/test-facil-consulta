@@ -32,7 +32,8 @@ class Medico extends Model
      */
     protected $rules = array(
         'nome' => 'required|max:100',
-        'especialidade' => 'required|max:100'
+        'especialidade' => 'required|max:100',
+        'cidade_id' => 'required'
     );
 
     /**
