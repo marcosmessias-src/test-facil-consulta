@@ -44,4 +44,12 @@ class Medico extends Model
         $this->errors = $validator->messages();
         return false;
     }
+
+    /**
+     * Get the city that owns the doctor.
+     */
+    public function cidade()
+    {
+        return $this->belongsTo(Cidade::class);
+    }
 }

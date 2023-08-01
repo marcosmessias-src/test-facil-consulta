@@ -43,4 +43,12 @@ class Cidade extends Model
         $this->errors = $validator->messages();
         return false;
     }
+
+    /**
+     * Get the doctors for the city.
+     */
+    public function medicos()
+    {
+        return $this->hasMany(Medico::class);
+    }
 }
