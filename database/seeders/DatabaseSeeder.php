@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Cidade;
+use App\Models\Medico;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +23,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Cidade::factory(20)->create();
+        User::create([
+            'name' => 'Krishna Ferreira',
+            'email' => 'krishnaferreira@facilconsulta.com',
+            'password' => 'Sou+FacilConsulta'
+        ]);
+
+        Medico::factory(20)->create();
     }
 }
