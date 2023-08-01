@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MedicoResource;
+use App\Http\Resources\StoreMedicoResource;
 use App\Models\Cidade;
 use App\Models\Medico;
 use Illuminate\Http\Request;
@@ -36,4 +37,20 @@ class MedicoController extends Controller
         ], 404);
 
     }
+
+    /**
+     * Store a newly created doctor in storage.
+     */
+    public function store(Request $request)
+    {
+        $medicoValidator = new Medico();
+        if($medicoValidator->validate($request->all())){
+            $medico = Medico::create($request->all());
+            return new StoreMedicoResource($medico);
+        }
+
+        return response($medicoValidator->errors, 400);
+    }
+
+
 }
