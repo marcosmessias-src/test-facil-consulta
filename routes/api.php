@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\MedicoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,14 @@ Route::controller(AuthController::class)->group(function () {
 */
 
 Route::get('cidades', [CidadeController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| Listar médicos
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('medicos', [MedicoController::class, 'index']);
+
+Route::get('cidades/{id_cidade}/medicos', [MedicoController::class, 'bycity']);
