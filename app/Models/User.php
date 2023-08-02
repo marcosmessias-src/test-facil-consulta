@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -43,6 +44,29 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Rules for validation.
+     */
+    protected $rules = array(
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:6',
+    );
+
+    /**
+     * Input validation.
+     */
+    public function validate($inputs, $update = false){
+        $rules = $this->rules;
+
+        if($update) $rules = $this->rulesUpdate;
+
+        $validator = Validator::make($inputs, $rules);
+        if ($validator->passes()) return true;
+        $this->errors = $validator->messages();
+        return false;
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
