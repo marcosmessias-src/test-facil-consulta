@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PacienteResource;
 use App\Models\Medico;
-use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
@@ -23,6 +22,5 @@ class PacienteController extends Controller
         return response([
             'Médico não encontrado!'
         ], 404);
-
     }
 }
