@@ -24,7 +24,7 @@ Para instalar corretamente, siga os passos a seguir em uma máquina linux e com 
 - sail artisan migrate
 - sail artisan db:seed
 
-Após isso, acesse a URL: https://localhost
+Após isso, acesse a URL: http://localhost
 
 Para fazer login, já estará cadastrado o seguinte usuário e senha:
 Email: krishnaferreira@facilconsulta.com
