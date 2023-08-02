@@ -63,7 +63,7 @@ Route::middleware('auth:api')->post('medicos', [MedicoController::class, 'store'
 |
 */
 
-Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'relatePatient']);
+Route::middleware('auth:api')->post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'relatePatient']);
 
 /*
 |--------------------------------------------------------------------------
