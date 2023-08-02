@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,5 +53,13 @@ class Medico extends Model
     public function cidade()
     {
         return $this->belongsTo(Cidade::class);
+    }
+
+    /**
+     * The Pacients that belong to the Doctor.
+     */
+    public function pacientes(): BelongsToMany
+    {
+        return $this->belongsToMany(Paciente::class, 'medico_pacientes');
     }
 }
