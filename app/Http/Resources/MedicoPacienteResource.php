@@ -21,9 +21,9 @@ class MedicoPacienteResource extends JsonResource
                     "nome"=> $this->medico->nome,
                     "especialidade"=> $this->medico->especialidade,
                     "cidade_id"=> $this->medico->cidade_id,
-                    "created_at"=> $this->medico->created_at->format('Y-m-d H:i:s'),
-                    "updated_at"=> $this->medico->updated_at->format('Y-m-d H:i:s'),
-                    "deleted_at"=> $this->medico->deleted_at->format('Y-m-d H:i:s')
+                    "created_at"=> $this->medico->created_at?->format('Y-m-d H:i:s'),
+                    "updated_at"=> $this->medico->updated_at?->format('Y-m-d H:i:s'),
+                    "deleted_at"=> $this->medico->deleted_at?->format('Y-m-d H:i:s')
                 ],
 
             "paciente" =>
@@ -32,9 +32,9 @@ class MedicoPacienteResource extends JsonResource
                     "nome"=> $this->paciente->nome,
                     "cpf"=> $this->paciente->cpf,
                     "celular"=> $this->paciente->celular,
-                    "created_at"=> $this->paciente->created_at->format('Y-m-d H:i:s'),
-                    "updated_at"=> $this->paciente->updated_at->format('Y-m-d H:i:s'),
-                    "deleted_at"=> $this->paciente->deleted_at->format('Y-m-d H:i:s')
+                    "created_at"=> $this->paciente->created_at?->format('Y-m-d H:i:s'),
+                    "updated_at"=> $this->paciente->updated_at?->format('Y-m-d H:i:s'),
+                    "deleted_at"=> $this->paciente->deleted_at?->format('Y-m-d H:i:s')
                 ]
         ];
     }
