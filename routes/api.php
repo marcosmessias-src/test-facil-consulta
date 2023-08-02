@@ -73,5 +73,6 @@ Route::post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 
 */
 
 Route::middleware('auth:api')->controller(PacienteController::class)->group(function () {
-    Route::get('medicos/{id_medico}/pacientes', 'byDoctor');
+    Route::get('medicos/{id_medico}/pacientes', 'byDoctor'); // Lista pacientes por médico
+    Route::post('pacientes/{id_paciente}', 'update'); // Atualiza dados do paciente
 });
