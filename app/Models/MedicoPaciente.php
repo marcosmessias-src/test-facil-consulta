@@ -30,8 +30,8 @@ class MedicoPaciente extends Model
      * Rules for validation.
      */
     protected $rules = array(
-        'medico_id' => 'required',
-        'paciente_id' => 'required'
+        'medico_id' => 'required|numeric',
+        'paciente_id' => 'required|numeric'
     );
 
     /**
@@ -42,5 +42,21 @@ class MedicoPaciente extends Model
         if ($validator->passes()) return true;
         $this->errors = $validator->messages();
         return false;
+    }
+
+    /**
+     * Return doctor.
+     */
+    public function medico()
+    {
+        return $this->belongsTo(Medico::class);
+    }
+
+    /**
+     * Return patient.
+     */
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
     }
 }
