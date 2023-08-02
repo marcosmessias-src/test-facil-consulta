@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\PacienteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,3 +54,18 @@ Route::get('cidades/{id_cidade}/medicos', [MedicoController::class, 'bycity']);
 */
 
 Route::middleware('auth:api')->post('medicos', [MedicoController::class, 'store']);
+
+/*
+|--------------------------------------------------------------------------
+| Listar/Atualizar/Cadastrar pacientes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::middleware('auth:api')->controller(PacienteController::class)->group(function () {
+    Route::get('medicos/{id_medico}/pacientes', 'byDoctor');
+    Route::post('login', 'login');
+    Route::get('user', 'user');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});
