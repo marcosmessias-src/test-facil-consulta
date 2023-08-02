@@ -51,4 +51,21 @@ class PacienteController extends Controller
             'Paciente não encontrado!'
         ], 404); // Retorna erro e status http 404
     }
+
+    /**
+     * Adicioar paciente.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(Request $request)
+    {
+        $validator = new Paciente(); // Validador de dados
+
+        if ($validator->validate($request->all())){
+            $paciente = Paciente::create($request->all());
+            return new PacienteResource($paciente);
+        }
+
+        return response($validator->errors, 400); // Retorna os erros e status http 400
+    }
 }
