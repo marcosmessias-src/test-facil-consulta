@@ -33,15 +33,28 @@ class Paciente extends Model
      */
     protected $rules = array(
         'nome' => 'required|max:100',
-        'cpf' => 'required|size:20',
-        'celular' => 'required|size:20'
+        'cpf' => 'required|max:20',
+        'celular' => 'required|max:20'
+    );
+
+    /**
+     * Rules for validation when update.
+     */
+    protected $rulesUpdate = array(
+        'nome' => 'max:100',
+        'cpf' => 'max:20',
+        'celular' => 'max:20'
     );
 
     /**
      * Input validation.
      */
-    public function validate($inputs){
-        $validator = Validator::make($inputs, $this->rules);
+    public function validate($inputs, $update = false){
+        $rules = $this->rules;
+
+        if($update) $rules = $this->rulesUpdate;
+
+        $validator = Validator::make($inputs, $rules);
         if ($validator->passes()) return true;
         $this->errors = $validator->messages();
         return false;
