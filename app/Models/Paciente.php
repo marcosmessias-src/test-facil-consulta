@@ -33,7 +33,8 @@ class Paciente extends Model
      */
     protected $rules = array(
         'nome' => 'required|max:100',
-        'cpf' => 'required|size:20'
+        'cpf' => 'required|size:20',
+        'celular' => 'required|size:20'
     );
 
     /**
