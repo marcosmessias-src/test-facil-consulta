@@ -17,7 +17,7 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        return MedicoResource::collection(Medico::all());
+        return MedicoResource::collection(Medico::all()); // Retorna uma collection com todos os médicos cadastrados
     }
 
     /**
@@ -32,9 +32,7 @@ class MedicoController extends Controller
             return MedicoResource::collection($cidade->medicos);
         }
 
-        return response([
-            'Cidade não encontrada!'
-        ], 404);
+        return response(['Cidade não encontrada!'], 404); // Retorna o erro e status http 404
 
     }
 
@@ -49,7 +47,7 @@ class MedicoController extends Controller
             return new StoreMedicoResource($medico);
         }
 
-        return response($medicoValidator->errors, 400);
+        return response($medicoValidator->errors, 400); // Retorna os erros e status http 400
     }
 
 

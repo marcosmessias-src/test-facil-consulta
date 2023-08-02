@@ -15,6 +15,6 @@ class CidadeController extends Controller
      */
     public function index()
     {
-        return CidadeResource::collection(Cidade::all());
+        return CidadeResource::collection(Cidade::all()); // Retorna uma collection com todas as cidades cadastradas.
     }
 }

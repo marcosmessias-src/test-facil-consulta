@@ -5,17 +5,12 @@ use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\MedicoPacienteController;
 use App\Http\Controllers\PacienteController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| JWT Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
 |
 */
 
@@ -34,7 +29,7 @@ Route::controller(AuthController::class)->group(function () {
 |
 */
 
-Route::get('cidades', [CidadeController::class, 'index']);
+Route::get('cidades', [CidadeController::class, 'index']); // Lista todas as cidades
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +38,9 @@ Route::get('cidades', [CidadeController::class, 'index']);
 |
 */
 
-Route::get('medicos', [MedicoController::class, 'index']);
+Route::get('medicos', [MedicoController::class, 'index']); // Lista todos os médicos
 
-Route::get('cidades/{id_cidade}/medicos', [MedicoController::class, 'bycity']);
+Route::get('cidades/{id_cidade}/medicos', [MedicoController::class, 'bycity']); // Lista médicos por cidade
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +49,7 @@ Route::get('cidades/{id_cidade}/medicos', [MedicoController::class, 'bycity']);
 |
 */
 
-Route::middleware('auth:api')->post('medicos', [MedicoController::class, 'store']);
+Route::middleware('auth:api')->post('medicos', [MedicoController::class, 'store']); // Adiciona médicos ao banco de dados
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +58,7 @@ Route::middleware('auth:api')->post('medicos', [MedicoController::class, 'store'
 |
 */
 
-Route::middleware('auth:api')->post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'relatePatient']);
+Route::middleware('auth:api')->post('/medicos/{id_medico}/pacientes', [MedicoPacienteController::class, 'relatePatient']); // Vincula pacientes a médicos
 
 /*
 |--------------------------------------------------------------------------
